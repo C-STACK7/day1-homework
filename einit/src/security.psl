@@ -14,6 +14,7 @@ use EDL kl.core.Core
 
 use EDL traffic_light.ControlSystem
 use EDL traffic_light.LightsGPIO
+use EDL traffic_light.Diagnostics
 
 /* Execution of entities allowed. */
 execute {
@@ -38,14 +39,101 @@ request src=traffic_light.ControlSystem
         grant()
 }
 
-/*
+/*deny mode 2 green light*/
 request src=traffic_light.ControlSystem 
     dst=traffic_light.LightsGPIO 
     endpoint=lightsGpio.mode 
     method=FMode {
-        assert (message.value != 0x404)        
+        assert (message.value != 0x404)     
 }
-*/
+
+/*deny mode 2 green 2 yellow light*/
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x606)     
+}
+
+/*deny mode 2 green 2 red light*/
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x505)     
+}
+
+/*deny mode 2 green 2 red  2 yellow light*/
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x707)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x504)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x506)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x507)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x604)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x605)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x607)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x704)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x705)     
+}
+
+request src=traffic_light.ControlSystem 
+    dst=traffic_light.LightsGPIO 
+    endpoint=lightsGpio.mode 
+    method=FMode {
+        assert (message.value != 0x706)     
+}
+
 
 request src=Einit {
     grant ()
@@ -58,7 +146,10 @@ request src=kl.core.Core {
 request src=traffic_light.LightsGPIO dst=kl.core.Core {
     grant ()
 }
-
+/*---------------------------------------------------------*/
+request src=traffic_light.Diagnostics {
+    grant ()
+}
 
 /* Response messages allowed. */
 response {

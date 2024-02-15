@@ -38,7 +38,11 @@ request src=traffic_light.ControlSystem
         grant()
 }
 
+<<<<<<< HEAD
 /*deny mode 2 green light*/
+=======
+
+>>>>>>> 28b08d3 (only block 2 green color)
 request src=traffic_light.ControlSystem 
     dst=traffic_light.LightsGPIO 
     endpoint=lightsGpio.mode 
@@ -46,6 +50,7 @@ request src=traffic_light.ControlSystem
         assert (message.value != 0x404)     
 }
 
+<<<<<<< HEAD
 /*deny mode 2 green 2 yellow light*/
 request src=traffic_light.ControlSystem 
     dst=traffic_light.LightsGPIO 
@@ -133,6 +138,8 @@ request src=traffic_light.ControlSystem
         assert (message.value != 0x706)     
 }
 
+=======
+>>>>>>> 28b08d3 (only block 2 green color)
 
 request src=Einit {
     grant ()
